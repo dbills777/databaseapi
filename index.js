@@ -50,7 +50,14 @@ app.get('/phones', (req, res) => {
     res.json(phone);
   });
 });
-
+app.get('/', (req, res) => {
+  Phone.find((err, phone) => {
+    if (err) {
+      console.log(err);
+    }
+    res.json(phone);
+  });
+});
 //MODIFY EXISTING PRODUCT
 app.put('/phone/:id', (req, res) => {
   Phone.findById(req.params.id, (err, phone) => {
@@ -157,11 +164,10 @@ app.delete('/mfg/:id', (req, res) => {
     }
   );
 });
-app.get('/showmfg',(req, res)=>{
+app.get('/showmfg', (req, res) => {
   Phone.find({ cat: req.query.name })
     .populate('devices')
     .exec((err, devices) => {
-      res.json(devices)
+      res.json(devices);
     });
-})
-
+});
