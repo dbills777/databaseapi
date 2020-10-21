@@ -1,15 +1,17 @@
 ### ApiServer With DataBase
 
 [API SERVER](https://immense-brook-23031.herokuapp.com/)
+
 <hr>
  Tracks Product Options of: Name, Category, Price, Qty, Manufacturer
 <hr>
 
 Tracks Manufacturer Options of: Name, Address, Phone, and Devices
+
 <hr>
 Your API must be able to handle the following operations:
 
-Add new products: 
+Add new products:
 <br>
 EndPointExample:
 /addPhone?name=Razor&cat=nokia&price=300&qty=10&mfg=5f88d74773d1bbf81aab241d
@@ -40,6 +42,7 @@ app.post('/addPhone', (req, res) => {
   );
 });
 ```
+
 <br>
 Modify existing products & Update Quantity.
 updates anyfield available to a product (phone) that is passed in as a param.
@@ -90,6 +93,7 @@ app.delete('/phones/:id', (req, res) => {
   );
 });
 ```
+
 <br>
 Update quantity:
 <br>
@@ -113,6 +117,7 @@ app.put('/phone/:id', (req, res) => {
   });
 });
 ```
+
 <br>
 Add new Manufactures:
 <br>
@@ -142,6 +147,7 @@ app.post('/addmfg', (req, res) => {
   );
 });
 ```
+
 <br>
 Modify existing manufactures:
 <br>
@@ -165,6 +171,7 @@ app.put('/mfg/:id', (req, res) => {
   });
 });
 ```
+
 <br>
 Delete existing manufactures:
 <br>
@@ -188,6 +195,7 @@ app.put('/mfg/:id', (req, res) => {
   });
 });
 ```
+
 <br>
 All products by manufacture:
 <br>
@@ -195,14 +203,15 @@ EndPointExample:
 /showmfg?name=apple
 
 ```javascript
-app.get('/showmfg',(req, res)=>{
+app.get('/showmfg', (req, res) => {
   Phone.find({ cat: req.query.name })
     .populate('devices')
     .exec((err, devices) => {
-      res.json(devices)
+      res.json(devices);
     });
-})
+});
 ```
+
 <br>
 <hr>
 Extra Get Routes:
@@ -217,8 +226,8 @@ app.get('/mfg', (req, res) => {
     res.json(mfg);
   });
 });
-
 ```
+
 ```javascript
 //GET ALL PHONES
 app.get('/phones', (req, res) => {
